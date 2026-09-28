@@ -18,7 +18,7 @@ spec:
         - name: flaskapp
           image: rawanashraf/flaskapp:latest
           ports:
-            - containerPort: 5000
+            - containerPort: 5002
 
           envFrom:
             - configMapRef:
@@ -32,22 +32,22 @@ spec:
 
           startupProbe:
             httpGet:
-              path: /startup
-              port: 5000
+              path: /
+              port: 5002
             failureThreshold: 30
             periodSeconds: 10
 
           readinessProbe:
             httpGet:
-              path: /ready
-              port: 5000
+              path: /
+              port: 5002
             initialDelaySeconds: 5
             periodSeconds: 10
 
           livenessProbe:
             httpGet:
-              path: /live
-              port: 5000
+              path: /
+              port: 5002
             initialDelaySeconds: 15
             periodSeconds: 20
 
